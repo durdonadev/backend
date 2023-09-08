@@ -1,0 +1,122 @@
+{
+    "1": {
+        "food": 3690,
+        "rent": 11830,
+        "entertainment": 2390,
+        "transportation": 2470
+    },
+    "2": {
+        "food": 3430,
+        "rent": 11780,
+        "entertainment": 2040,
+        "transportation": 2410
+    },
+    "3": {
+        "food": 4170,
+        "rent": 14250,
+        "entertainment": 2850,
+        "transportation": 2600
+    },
+    "4": {
+        "food": 3880,
+        "rent": 13050,
+        "entertainment": 2780,
+        "transportation": 2600
+    },
+    "5": {
+        "food": 3870,
+        "rent": 11780,
+        "entertainment": 2740,
+        "transportation": 2410
+    },
+    "6": {
+        "food": 3880,
+        "rent": 11830,
+        "entertainment": 2740,
+        "transportation": 2440
+    },
+    "7": {
+        "food": 3720,
+        "rent": 11780,
+        "entertainment": 2780,
+        "transportation": 2410
+    },
+    "8": {
+        "food": 3600,
+        "rent": 10880,
+        "entertainment": 2650,
+        "transportation": 2270
+    },
+    "9": {
+        "food": 4030,
+        "rent": 13250,
+        "entertainment": 2740,
+        "transportation": 2550
+    },
+    "10": {
+        "food": 4000,
+        "rent": 11830,
+        "entertainment": 2780,
+        "transportation": 2410
+    },
+    "11": {
+        "food": 3880,
+        "rent": 11830,
+        "entertainment": 2720,
+        "transportation": 2440
+    },
+    "12": {
+        "food": 4000,
+        "rent": 11830,
+        "entertainment": 2780,
+        "transportation": 2410
+    },
+    "13": {
+        "food": 3870,
+        "rent": 11780,
+        "entertainment": 2740,
+        "transportation": 2410
+    },
+    "14": {
+        "food": 3720,
+        "rent": 11780,
+        "entertainment": 2780,
+        "transportation": 2410
+    },
+    "15": {
+        "food": 3600,
+        "rent": 10880,
+        "entertainment": 2650,
+        "transportation": 2270
+    },
+    "16": {
+        "food": 4030,
+        "rent": 13250,
+        "entertainment": 2740,
+        "transportation": 2550
+    },
+    "17": {
+        "food": 4000,
+        "rent": 11830,
+        "entertainment": 2780,
+        "transportation": 2410
+    },
+    "18": {
+        "food": 3880,
+        "rent": 11830,
+        "entertainment": 2720,
+        "transportation": 2440
+    },
+    "19": {
+        "food": 3720,
+        "rent": 11780,
+        "entertainment": 2780,
+        "transportation": 2380
+    },
+    "20": {
+        "food": 3970,
+        "rent": 11780,
+        "entertainment": 2770,
+        "transportation": 2410
+    }
+}
