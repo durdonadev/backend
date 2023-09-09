@@ -1,0 +1,16 @@
+h1 {
+    color: blue;
+}
+
+p {
+    color: red;
+}
+
+input[type="submit"] {
+    background-color: black;
+    color: white;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
