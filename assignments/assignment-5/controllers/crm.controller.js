@@ -1,4 +1,4 @@
-import { customers, products, orders } from "./data.js";
+import { customers, products, orders } from "../data.js";
 import { v4 as uuid, validate } from "uuid";
 
 const API_KEY = "jkdfbgjh765478326578%%%***@@@@bsdhfbdhjbbhvbdsfjhgc";
@@ -148,7 +148,7 @@ class OrderController {
                 .json({ message: "Not a valid customerId or productIds" });
         }
 
-        const id = uuid;
+        const id = uuid();
         const order = {
             id,
             customerId,
