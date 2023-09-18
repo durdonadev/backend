@@ -6,6 +6,23 @@ const API_KEY = "jkdfbgjh765478326578%%%***@@@@bsdhfbdhjbbhvbdsfjhgc";
 class CustomerController {
     // GET all customers.
     getAllCustomers = (req, res) => {
+        const { headers } = req;
+        if (headers.authorization) {
+            const apiKeyParts = headers.authorization.split(" ");
+
+            if (apiKeyParts[0] !== "Bearer" || apiKeyParts[1] !== API_KEY) {
+                res.status(401).json({
+                    message: "Not Valid API key"
+                });
+                return;
+            }
+        } else {
+            res.status(400).json({
+                message: "API key is missing"
+            });
+            return;
+        }
+
         res.status(200).json({
             data: customers
         });
@@ -62,6 +79,23 @@ class CustomerController {
 class ProductController {
     // Get all products.
     getAllProducts = (req, res) => {
+        const { headers } = req;
+        if (headers.authorization) {
+            const apiKeyParts = headers.authorization.split(" ");
+
+            if (apiKeyParts[0] !== "Bearer" || apiKeyParts[1] !== API_KEY) {
+                res.status(401).json({
+                    message: "Not Valid API key"
+                });
+                return;
+            }
+        } else {
+            res.status(400).json({
+                message: "API key is missing"
+            });
+            return;
+        }
+
         res.status(200).json({
             data: products
         });
@@ -117,6 +151,23 @@ class ProductController {
 class OrderController {
     // GET all orders.
     getAllOrders = (req, res) => {
+        const { headers } = req;
+        if (headers.authorization) {
+            const apiKeyParts = headers.authorization.split(" ");
+
+            if (apiKeyParts[0] !== "Bearer" || apiKeyParts[1] !== API_KEY) {
+                res.status(401).json({
+                    message: "Not Valid API key"
+                });
+                return;
+            }
+        } else {
+            res.status(400).json({
+                message: "API key is missing"
+            });
+            return;
+        }
+
         res.status(200).json({
             data: orders
         });
@@ -126,7 +177,7 @@ class OrderController {
     getOrderById = (req, res) => {
         const orderId = req.params.orderId;
         if (!validate(orderId) || !orders[orderId]) {
-            return res.status(400).json({ message: "Not a valid product ID" });
+            return res.status(400).json({ message: "Not a valid order ID" });
         }
 
         res.status(200).json({ data: orders[orderId] });
