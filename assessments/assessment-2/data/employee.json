@@ -1,0 +1,22 @@
+{
+    "employees": [
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440000",
+            "firstName": "John",
+            "lastName": "Doe",
+            "department": "Engineering",
+            "role": "Software Engineer",
+            "yearlySalary": 80000,
+            "phoneNumber": "555-555-5555"
+        },
+        {
+            "id": "9b34a4e3-a1d4-4f3e-af4d-7c262a36711e",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "department": "Marketing",
+            "role": "Marketing Specialist",
+            "yearlySalary": 70000,
+            "phoneNumber": "444-444-4444"
+        }
+    ]
+}
