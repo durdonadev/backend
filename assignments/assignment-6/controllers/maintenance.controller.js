@@ -39,6 +39,22 @@ class MaintenanceController {
         res.status(200).json({ data: maintenance[maintenanceId] });
     };
 
+    // createMaintenance = (req, res) => {
+    //     const { carId, oilChange } = req.body;
+    //     if (!validate(carId) || !cars[carId]) {
+    //         return res.status(400).json({ message: "Not a valid car ID" });
+    //     }
+
+    //     const id = uuid();
+    //     const maintenance = {
+    //         id,
+    //         carId,
+    //         oilChange
+    //     };
+    //     maintenance[id] = maintenance;
+    //     res.status(201).json({ data: maintenance });
+    // };
+
     createMaintenance = (req, res) => {
         const { carId, oilChange } = req.body;
         if (!validate(carId) || !cars[carId]) {
@@ -46,13 +62,13 @@ class MaintenanceController {
         }
 
         const id = uuid();
-        const maintenance = {
+        const maintenence = {
             id,
             carId,
             oilChange
         };
-        maintenance[id] = maintenance;
-        res.status(201).json({ data: maintenance });
+        maintenence[id] = maintenence;
+        res.status(201).json({ data: maintenence });
     };
 
     updateMaintenance = (req, res) => {

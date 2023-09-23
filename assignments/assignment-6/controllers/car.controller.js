@@ -1,5 +1,7 @@
 import { cars } from "../data.js";
-import { v4 as uuid, validate } from "uuid";
+import { carService } from "../services/car.service.js";
+import { sanitizeObj } from "../utils/sanitizeObj.js";
+import { CAR_FIELDS } from "../const/allowedFields.js";
 
 const API_KEY = "jkdfbgjh765478326578%%%***@@@@bsdhfbdhjbbhvbdsfjhgc";
 
@@ -22,50 +24,40 @@ class CarController {
             return;
         }
 
+        const cars = carService.getAllCars();
         res.status(200).json({
             data: cars
         });
     };
 
     getCarById = (req, res) => {
-        const carId = req.params.carId;
-
-        if (!validate(carId) || !cars[carId]) {
-            return res.status(400).json({ message: "Not a valid car ID" });
-        }
-
-        res.status(200).json({ data: cars[carId] });
+        const car = carService.getCarById(req.params.carId);
+        res.status(200).json({ data: car });
     };
 
     createCar = (req, res) => {
-        const data = req.body;
-        const id = uuid();
-        const car = {
-            id,
-            ...data
-        };
-        cars[id] = car;
+        const data = sanitizeObj(CAR_FIELDS, req.body);
+        const car = carService.createCar(data);
         res.status(201).json({ data: car });
     };
 
     updateCar = (req, res) => {
-        const carId = req.params.carId;
-        const updatedData = req.body;
+        const sanitizedData = sanitizeObj(CAR_FIELDS, req.body);
 
-        if (!validate(carId) || !cars[carId]) {
-            return res.status(400).json({ message: "Not a valid car ID" });
+        const result = carService.updateCar(req.params.carId, sanitizedData);
+
+        if (result === "Error") {
+            res.status(404).json({
+                message: "Car does not exist"
+            });
+            return;
         }
-
-        cars[carId] = { ...cars[carId], ...updatedData };
-        res.status(200).json({ data: cars[carId] });
+        res.status(200).json({ data: result });
     };
 
     deleteCar = (req, res) => {
         const carId = req.params.carId;
 
-        if (!validate(carId) || !cars[carId]) {
-            return res.status(400).json({ message: "Not a valid car ID" });
-        }
         delete cars[carId];
         res.status(204).send();
     };
