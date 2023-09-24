@@ -1,4 +1,3 @@
-import { cars } from "../data.js";
 import { carService } from "../services/car.service.js";
 import { sanitizeObj } from "../utils/sanitizeObj.js";
 import { CAR_FIELDS } from "../const/allowedFields.js";
@@ -44,21 +43,26 @@ class CarController {
     updateCar = (req, res) => {
         const sanitizedData = sanitizeObj(CAR_FIELDS, req.body);
 
-        const result = carService.updateCar(req.params.carId, sanitizedData);
+        const updatedCar = carService.updateCar(
+            req.params.carId,
+            sanitizedData
+        );
 
-        if (result === "Error") {
+        if (updatedCar === "Error") {
             res.status(404).json({
                 message: "Car does not exist"
             });
             return;
         }
-        res.status(200).json({ data: result });
+        res.status(200).json({ data: updatedCar });
     };
 
     deleteCar = (req, res) => {
-        const carId = req.params.carId;
-
-        delete cars[carId];
+        const result = carService.deleteCar(req.params.carId);
+        if (result === "Error") {
+            res.status(404).json({ message: "Car does not exist" });
+            return;
+        }
         res.status(204).send();
     };
 }

@@ -1,17 +1,44 @@
 import { validate } from "uuid";
 
 class ValidationMiddleware {
-    validateIds = (req, res, next) => {
-        const { params } = req;
-        for (const id in params) {
-            if (id.toLowerCase().endsWith("id")) {
-                if (!validate(id)) {
-                    res.status(400).json({ message: `Not a valid id` });
-                }
-            }
-        }
+    validateCarIds = (req, res, next) => {
+        const { carId } = req.params;
 
-        next();
+        if (validate(carId)) {
+            next();
+            return;
+        }
+        res.status(400).json({ message: "Not a valid car ID" });
+    };
+
+    validateCarIdsInBody = (req, res, next) => {
+        const { carId } = req.body;
+
+        if (validate(carId)) {
+            next();
+            return;
+        }
+        res.status(400).json({ message: "Not a valid car ID" });
+    };
+
+    validateRentalIds = (req, res, next) => {
+        const { rentalId } = req.params;
+
+        if (validate(rentalId)) {
+            next();
+            return;
+        }
+        res.status(400).json({ message: "Not a valid rental ID" });
+    };
+
+    validateMaintenanceIds = (req, res, next) => {
+        const { maintenanceId } = req.params;
+
+        if (validate(maintenanceId)) {
+            next();
+            return;
+        }
+        res.status(400).json({ message: "Not a valid maintenance ID" });
     };
 }
 

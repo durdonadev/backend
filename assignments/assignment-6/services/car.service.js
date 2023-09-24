@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 
 class CarService {
     getAllCars() {
-        return Object.values(cars);
+        return cars;
     }
 
     getCarById(carId) {
@@ -25,6 +25,14 @@ class CarService {
         if (car) {
             cars[carId] = { ...cars[carId], ...data };
             return cars[carId];
+        }
+        return "Error";
+    }
+
+    deleteCar(carId) {
+        if (cars[carId]) {
+            delete cars[carId];
+            return;
         }
         return "Error";
     }

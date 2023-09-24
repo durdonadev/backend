@@ -1,78 +1,44 @@
-import { cars, rentals } from "../data.js";
-import { v4 as uuid, validate } from "uuid";
-
-const API_KEY = "jkdfbgjh765478326578%%%***@@@@bsdhfbdhjbbhvbdsfjhgc";
+import { rentalService } from "../services/rental.service.js";
+import { sanitizeObj } from "../utils/sanitizeObj.js";
+import { RENTAL_FIELDS } from "../const/allowedFields.js";
 
 class RentalController {
     getAllRentals = (req, res) => {
-        const { headers } = req;
-        if (headers.authorization) {
-            const apiKeyParts = headers.authorization.split(" ");
-
-            if (apiKeyParts[0] !== "Bearer" || apiKeyParts[1] !== API_KEY) {
-                res.status(401).json({
-                    message: "Not Valid API key"
-                });
-                return;
-            }
-        } else {
-            res.status(400).json({
-                message: "API key is missing"
-            });
-            return;
-        }
-
+        const rentals = rentalService.getAllRentals();
         res.status(200).json({
             data: rentals
         });
     };
 
     getRentalById = (req, res) => {
-        const rentalId = req.params.rentalId;
-
-        if (!validate(rentalId) || !rentals[rentalId]) {
-            return res.status(400).json({ message: "Not a valid rental ID" });
-        }
-
-        res.status(200).json({ data: rentals[rentalId] });
+        const rental = rentalService.getRentalById(req.params.rentalId);
+        res.status(200).json({ data: rental });
     };
 
     createRental = (req, res) => {
-        const { carId, startDate, endDate } = req.body;
-        if (!validate(carId) || !cars[carId]) {
-            return res.status(400).json({ message: "Not a valid car ID" });
-        }
-
-        const id = uuid();
-        const rental = {
-            id,
-            carId,
-            startDate,
-            endDate
-        };
-        rentals[id] = rental;
+        const sanitizedData = sanitizeObj(RENTAL_FIELDS, req.body);
+        const rental = rentalService.createRental(sanitizedData);
         res.status(201).json({ data: rental });
     };
 
     updateRental = (req, res) => {
-        const rentalId = req.params.rentalId;
-        const updatedData = req.body;
+        const sanitizedData = sanitizeObj(RENTAL_FIELDS, req.body);
+        const updatedRental = rentalService.updateRental(
+            req.params.rentalId,
+            sanitizedData
+        );
 
-        if (!validate(rentalId) || !rentals[rentalId]) {
-            return res.status(400).json({ message: "Not a valid rental ID" });
+        if (updatedRental === "Error") {
+            res.status(404).json({ message: "Rental does not exist" });
         }
-
-        rentals[rentalId] = { ...rentals[rentalId], ...updatedData };
-        res.status(200).json({ data: rentals[rentalId] });
+        res.status(200).json({ data: updatedRental });
     };
 
     deleteRental = (req, res) => {
-        const rentalId = req.params.rentalId;
-
-        if (!validate(rentalId) || !rentals[rentalId]) {
-            return res.status(400).json({ message: "Not a valid rental ID" });
+        const result = rentalService.deleteRental(req.params.rentalId);
+        if (result === "Error") {
+            res.status(404).json({ message: "Rental does not exist" });
         }
-        delete rentals[rentalId];
         res.status(204).send();
     };
 }
