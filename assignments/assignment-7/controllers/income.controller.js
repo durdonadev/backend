@@ -14,6 +14,7 @@ class IncomesController {
                 });
             });
     }
+
     getIncomeById(req, res) {
         const incomeId = req.params.incomeId;
         const income = incomesService
@@ -27,6 +28,47 @@ class IncomesController {
                 });
             });
         return income;
+    }
+
+    createIncome(req, res) {
+        return incomesService
+            .createIncome(req.body)
+            .then((newIncome) => {
+                res.status(201).json({ data: newIncome });
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message: err
+                });
+            });
+    }
+
+    updateIncomeById(req, res) {
+        const { incomeId } = req.params;
+
+        return incomesService
+            .updateIncomeById(incomeId, req.body)
+            .then((updatedIncome) => {
+                res.status(200).json({ data: updatedIncome });
+            })
+            .catch((err) => {
+                res.status(500).json({ message: err });
+            });
+    }
+
+    deleteIncomeById(req, res) {
+        const { incomeId } = req.params;
+
+        return incomesService
+            .deleteIncomeById(incomeId)
+            .then(() => {
+                res.status(204).send();
+            })
+            .catch((err) =>
+                res.status(500).json({
+                    message: err
+                })
+            );
     }
 }
 

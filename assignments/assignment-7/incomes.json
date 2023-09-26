@@ -1,10 +1,1 @@
-{
-    "incomes": {
-        "a1b2c3d4-e5f6-7a8b-9c1d-2e3f4a5b6c7d": {
-            "id": "a1b2c3d4-e5f6-7a8b-9c1d-2e3f4a5b6c7d",
-            "source": "Salary",
-            "amount": 5000,
-            "date": "09/22/2023"
-        }
-    }
-}
+{"incomes":{"c0039bf2-6d7b-4c12-9e0a-f841186cd43f":{"id":"c0039bf2-6d7b-4c12-9e0a-f841186cd43f","source":"Rental","amount":25000,"date":"08/11/2023"},"83391a08-4b78-464c-9ed0-d480dbcd252c":{"id":"83391a08-4b78-464c-9ed0-d480dbcd252c","source":"Rental","amount":25000,"date":"08/11/2023"},"3b991ce9-e10d-4772-a545-f44784d82866":{"id":"3b991ce9-e10d-4772-a545-f44784d82866","source":"Rental","amount":25000,"date":"08/11/2023"},"314815f8-c399-41b8-a0e5-28f5e55055b3":{"id":"314815f8-c399-41b8-a0e5-28f5e55055b3","source":"Rental","amount":25000,"date":"08/11/2023"},"347b0616-3176-4cc4-b603-c761b3870720":{"id":"347b0616-3176-4cc4-b603-c761b3870720","source":"Rental","amount":25000,"date":"08/11/2023"}}}
