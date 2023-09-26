@@ -1,0 +1,9 @@
+{
+    "tags": {
+        "tagUuid1": {
+            "id": "tagUuid1",
+            "name": "JavaScript",
+            "description": "Posts related to JavaScript programming language."
+        }
+    }
+}

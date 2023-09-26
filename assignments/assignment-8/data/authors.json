@@ -1,0 +1,10 @@
+{
+    "authors": {
+        "authorUuid1": {
+            "id": "authorUuid1",
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "bio": "Specializes in JavaScript and Web Development."
+        }
+    }
+}
