@@ -1,0 +1,10 @@
+{
+    "incomes": {
+        "a1b2c3d4-e5f6-7a8b-9c1d-2e3f4a5b6c7d": {
+            "id": "a1b2c3d4-e5f6-7a8b-9c1d-2e3f4a5b6c7d",
+            "source": "Salary",
+            "amount": 5000,
+            "date": "09/22/2023"
+        }
+    }
+}

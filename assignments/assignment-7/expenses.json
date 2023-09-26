@@ -1,0 +1,10 @@
+{
+    "expenses": {
+        "z1x2c3v4-b5n6-m7l8-k9j1-0p2o3i4u5t6y": {
+            "id": "z1x2c3v4-b5n6-m7l8-k9j1-0p2o3i4u5t6y",
+            "source": "Groceries",
+            "amount": 200,
+            "date": "09/22/2023"
+        }
+    }
+}
