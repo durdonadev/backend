@@ -30,19 +30,17 @@ class PostService {
     }
 
     async addPost(data) {
-        const posts = await this.readAndParseFile();
+        const postsObj = await this.readAndParseFile();
         const id = uuid();
-        const authorId = data.authorId;
-        authorId = uuid();
 
         const newPost = {
             id,
-            authorId,
             ...data
         };
-        posts[id] = newPost;
 
-        await this.writeFile({ posts });
+        postsObj[id] = newPost;
+
+        await this.writeFile({ posts: postsObj });
         return newPost;
     }
 

@@ -1,5 +1,6 @@
 import { postService } from "../services/post.service.js";
-import { promises as fs } from "fs";
+import { sanitizedObj } from "../utils/sanitizeObj.js";
+import { POST_FIELDS } from "../const/allowedFields.js";
 
 class PostController {
     async getAllPosts(req, res) {
@@ -23,17 +24,18 @@ class PostController {
 
     async addPost(req, res) {
         try {
-            const newPost = await postService.addPost(req.body);
-            res.status(201).json({ data: newPost });
-        } catch (err) {
-            res.status(500).json({ message: err });
+            const data = sanitizedObj(POST_FIELDS, req.body);
+            const newPost = await postService.addPost(data);
+            res.status(201).json({ newPost: newPost });
+        } catch (error) {
+            res.status(500).json({ message: error });
         }
     }
 
     async updatePost(req, res) {
         try {
             const postId = req.params.postId;
-            const data = req.body;
+            const data = sanitizedObj(POST_FIELDS, req.body);
             const updatedPost = await postService.updatePost(postId, data);
             res.status(200).json({ data: updatedPost });
         } catch (err) {
