@@ -8,6 +8,7 @@ const PORT = 4000;
 
 app.use("/posts", postRouter);
 app.use("/authors", authorRouter);
+app.use("/tags", tagRouter);
 
 app.listen(PORT, () => {
     console.log("Server is running on ", PORT);
